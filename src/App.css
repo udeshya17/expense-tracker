@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+.container {
+    background-color: #3B3B3B ;
+    width: 1256px;
+    height: 781px;
+    top: 36px;
+    left: 12px;
+    padding-left: 30px;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heading {
+    padding-top: 10px;
+    color: white;
+    font-family: Ubuntu;
+    text-align: left;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36.77px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.content {
+    width: 1211px;
+height: 269px;
+top: 94px;
+left: 32px;
+border-radius: 10px;
+background-color: #626262;
+display: flex;
+/* justify-content: space-between; */
+gap: 50px;
+text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cardOne {
+    background-color: #9B9B9B;
+    width: 355.41px;
+height: 181px;
+top: 140px;
+left: 90px;
+border-radius: 15px;
+margin-left: 50px;
+margin-top: 40px;
+
 }
 
-.App-link {
-  color: #61dafb;
+.cardTwo {
+    background-color: #9B9B9B;
+    width: 355.41px;
+height: 181px;
+top: 140px;
+left: 90px;
+border-radius: 15px;
+margin-top: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.subHead {
+    width: 302px;
+height: 34px;
+font-family: Ubuntu;
+font-size: 30px;
+font-weight: 400;
+line-height: 34.47px;
+color: white;
+display: inline-block;
+padding-top: 10px;
+}
+
+span {
+    font-family: Ubuntu;
+font-size: 30px;
+font-weight: 700;
+line-height: 34.47px;
+text-align: left;
+
+}
+
+.addButton {
+    width: 167.65px;
+height: 38px;
+top: 245px;
+left: 183.88px;
+font-family: Ubuntu;
+font-size: 16px;
+font-weight: 700;
+line-height: 18.38px;
+text-align: left;
+color: #ffff;
+text-align: center;
+border-radius: 15px;
+border: none;
+cursor: pointer;
 }
