@@ -1,0 +1,40 @@
+.pieChart {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 199px;
+    height: 199px;
+    top: 118px;
+    left: 962px;
+    margin-left: 40px;
+  }
+
+.legend {
+    display: flex;
+    margin-top: 10px;
+}
+  
+.legendItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+  
+.legendColor {
+    width: 26px;
+    height: 8px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+  
+.legendText {
+    color: white;
+    font-family: Ubuntu;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.34px;
+    text-align: left;
+}

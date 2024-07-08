@@ -9,13 +9,15 @@
 }
 
 .heading {
-    padding-top: 10px;
+    padding-top: 20px;
     color: white;
     font-family: Ubuntu;
     text-align: left;
     font-weight: 700;
     font-size: 32px;
     line-height: 36.77px;
+    margin: 0;
+    padding-bottom: 10px;
 }
 
 .content {
@@ -89,4 +91,47 @@ text-align: center;
 border-radius: 15px;
 border: none;
 cursor: pointer;
+}
+
+.subContents {
+    width: 1185px;
+height: 345.03px;
+top: 440.97px;
+left: 32px;
+border: 1px;
+display: flex;
+gap: 55px;
+}
+
+.subContentHead {
+    width: 261px;
+height: 32px;
+font-family: Ubuntu;
+font-size: 28px;
+font-style: italic;
+font-weight: 700;
+line-height: 32.17px;
+text-align: left;
+color: #ffff;
+margin: 0;
+padding-top: 20px;
+padding-bottom: 10px;
+}
+
+.subContainerOne {
+    width: 738.33px;
+height: 345.03px;
+top: 440.97px;
+background-color: white;
+border-radius: 15px;
+}
+
+.subContainerTwo {
+    width: 417px;
+height: 345px;
+top: 441px;
+left: 800px;
+border-radius: 15px;
+background-color: #ffff;
+
 }
