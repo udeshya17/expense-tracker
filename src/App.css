@@ -1,11 +1,8 @@
 .container {
-    background-color: #3B3B3B ;
+    background-color: #3B3B3B;
     width: 1256px;
     height: 781px;
-    top: 36px;
-    left: 12px;
     padding-left: 30px;
-    
 }
 
 .heading {
@@ -22,116 +19,129 @@
 
 .content {
     width: 1211px;
-height: 269px;
-top: 94px;
-left: 32px;
-border-radius: 10px;
-background-color: #626262;
-display: flex;
-/* justify-content: space-between; */
-gap: 50px;
-text-align: center;
+    height: 269px;
+    border-radius: 10px;
+    background-color: #626262;
+    display: flex;
+    gap: 50px;
+    text-align: center;
 }
 
-.cardOne {
-    background-color: #9B9B9B;
-    width: 355.41px;
-height: 181px;
-top: 140px;
-left: 90px;
-border-radius: 15px;
-margin-left: 50px;
-margin-top: 40px;
-
-}
-
+.cardOne,
 .cardTwo {
     background-color: #9B9B9B;
     width: 355.41px;
-height: 181px;
-top: 140px;
-left: 90px;
-border-radius: 15px;
-margin-top: 40px;
+    height: 181px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.cardOne {
+    margin-left: 50px;
 }
 
 .subHead {
-    width: 302px;
-height: 34px;
-font-family: Ubuntu;
-font-size: 30px;
-font-weight: 400;
-line-height: 34.47px;
-color: white;
-display: inline-block;
-padding-top: 10px;
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 34.47px;
+    color: white;
+    display: inline-block;
+    padding-top: 10px;
 }
 
 span {
     font-family: Ubuntu;
-font-size: 30px;
-font-weight: 700;
-line-height: 34.47px;
-text-align: left;
-
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34.47px;
+    text-align: left;
 }
 
 .addButton {
     width: 167.65px;
-height: 38px;
-top: 245px;
-left: 183.88px;
-font-family: Ubuntu;
-font-size: 16px;
-font-weight: 700;
-line-height: 18.38px;
-text-align: left;
-color: #ffff;
-text-align: center;
-border-radius: 15px;
-border: none;
-cursor: pointer;
+    height: 38px;
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.38px;
+    text-align: center;
+    color: #ffff;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
 }
 
 .subContents {
     width: 1185px;
-height: 345.03px;
-top: 440.97px;
-left: 32px;
-border: 1px;
-display: flex;
-gap: 55px;
+    height: 345.03px;
+    display: flex;
+    gap: 55px;
+    padding-top: 30px;
 }
 
-.subContentHead {
-    width: 261px;
-height: 32px;
-font-family: Ubuntu;
-font-size: 28px;
-font-style: italic;
-font-weight: 700;
-line-height: 32.17px;
-text-align: left;
-color: #ffff;
-margin: 0;
-padding-top: 20px;
-padding-bottom: 10px;
+ .subContentHead {
+    font-family: Ubuntu;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 32.17px;
+    color: #ffff;
+    margin: 0;
+}
+
+.subContainerOne,
+.subContainerTwo {
+    border-radius: 15px;
+    background-color: #ffff;
 }
 
 .subContainerOne {
     width: 738.33px;
-height: 345.03px;
-top: 440.97px;
-background-color: white;
-border-radius: 15px;
+    height: 345.03px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
 }
 
 .subContainerTwo {
     width: 417px;
-height: 345px;
-top: 441px;
-left: 800px;
+    height: 345px;
+}
+
+hr{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.page {
+    width: 37px;
+height: 37px;
+top: 739px;
+left: 370px;
+border-radius: 5px;
+background: #43967B;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+}
+
+.leftButton,
+.rightButton {
+    width: 37px;
+height: 37px;
+top: 739px;
+left: 419px;
 border-radius: 15px;
-background-color: #ffff;
+border: none;
 
 }
