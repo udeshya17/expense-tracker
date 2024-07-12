@@ -3,11 +3,12 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import styles from './PieChart.module.css';
 
 const data = [
-    { name: 'Food', value: 700 },
-    { name: 'Entertainment', value: 300 },
-    { name: 'Travel', value: 200 },
-  ];
-  
+  { name: 'Food', value: 0 },
+  { name: 'Entertainment', value: 0 },
+  { name: 'Travel', value: 0 },
+];
+
+
   const COLORS = [ '#FF9304' , '#A000FF', '#FDE006'];
   
   const RADIAN = Math.PI / 180;

@@ -1,0 +1,66 @@
+.container {
+    background: #EFEFEFD9;
+    color: black;
+    padding-left: 30px;
+    padding-right: 10px;
+    position: fixed;
+    opacity: 100% !important;
+    width: 538px;
+    height: 335px;
+    top: 259px;
+    left: 371px;
+    border-radius: 15px;
+}
+
+.head {
+    width: 201px;
+    height: 34px;
+    top: 293px;
+    left: 401px;    
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34.47px;
+    text-align: left;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.addButton {
+    width: 223px;
+    height: 51px;
+    top: 493px;
+    left: 401px;
+    border-radius: 15px;
+    background: #F4BB4A;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: white;
+    border:none;
+    cursor: pointer;
+}
+
+.cancelButton {
+    width: 112px;
+    height: 51px;
+    top: 494px;
+    left: 640px;
+    border-radius: 15px;
+    color: black;
+    background: #E3E3E3;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border:none;
+    cursor: pointer;
+}
+
+.inputs {
+    width: 217px;
+    height: 51px;
+    top: 377px;
+    left: 401px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    background: #FBFBFB;
+    color: #919191;
+    border: none;
+    padding: 5px;
+}
