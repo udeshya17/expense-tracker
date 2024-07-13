@@ -1,14 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
 import styles from './Expense.module.css';
 
-function ExpenseModal({ isOpen, closeModal }) {
+function ExpenseModal({ isOpen, closeModal, addExpense, editingTransaction }) {
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('food');
+  const [date, setDate] = useState('');
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
+    if (editingTransaction) {
+      setTitle(editingTransaction.title);
+      setAmount(editingTransaction.amount);
+      setCategory(editingTransaction.category);
+      setDate(editingTransaction.date.toISOString().split('T')[0]);
+    } else {
+      setTitle('');
+      setAmount('');
+      setCategory('food');
+      setDate('');
+    }
+  }, [editingTransaction]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addExpense(amount, title, category, date);
+    closeModal();
+  };
 
   return (
     <ReactModal
@@ -16,20 +34,43 @@ function ExpenseModal({ isOpen, closeModal }) {
       onRequestClose={closeModal}
       className={styles.modal}
       overlayClassName={styles.overlay}
-      ariaHideApp={false} // only use this if you are not using the `appElement` prop
+      ariaHideApp={false}
     >
       <div className={styles.container}>
-        <p className={styles.head}>Add Expenses</p>
-        <form style={{ display: 'flex', textAlign: 'center', marginTop: '20px', flexWrap: 'wrap', gap: '30px' }}>
-          <input type="text" placeholder='Title' className={styles.inputs} />
-          <input type="number" placeholder='Price' className={styles.inputs} />
-          <select id="category" name="category" className={styles.inputs}>
+        <p className={styles.head}>{editingTransaction ? 'Edit Expense' : 'Add Expenses'}</p>
+        <form className={styles.formElement} onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder='Title'
+            className={styles.inputs}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder='Price'
+            className={styles.inputs}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <select
+            id="category"
+            name="category"
+            className={styles.inputs}
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="food">Food</option>
             <option value="travel">Travel</option>
             <option value="entertainment">Entertainment</option>
           </select>
-          <input type="date" placeholder='dd/mm/yyyy' className={styles.inputs} />
-          <button type="submit" onClick={closeModal} className={styles.addButton}>Add Expense</button>
+          <input
+            type="date"
+            className={styles.inputs}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <button type="submit" className={styles.addButton}>{editingTransaction ? 'Update Expense' : 'Add Expense'}</button>
           <button className={styles.cancelButton} onClick={closeModal}>Cancel</button>
         </form>
       </div>

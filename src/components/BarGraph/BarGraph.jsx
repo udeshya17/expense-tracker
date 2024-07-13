@@ -1,28 +1,23 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
-const data = [
-//   {
-//     name: 'Food',
-//     uv: 2000,
-//     pv: 400,
-//     amt: 1400,
-//   },
-//   {
-//     name: 'Entertainment',
-//     uv: 3000,
-//     pv: 1398,
-//     amt: 2210,
-//   },
-//   {
-//     name: 'Travel',
-//     uv: 2000,
-//     pv: 9800,
-//     amt: 2290,
-//   }
-];
+const Graph = ({ transactions }) => {
+  
+  const categoryTotals = transactions.reduce((acc, transaction) => {
+    const { category, amount } = transaction;
+    if (!acc[category]) {
+      acc[category] = 0;
+    }
+    acc[category] += amount;
+    return acc;
+  }, {});
 
-const Graph = () => {
+  
+  const data = Object.keys(categoryTotals).map((category) => ({
+    name: category,
+    value: categoryTotals[category],
+  }));
+
   return (
     <div style={{ width: '100%', height: '300px' }}>
       <ResponsiveContainer width="100%" height="100%">
@@ -43,7 +38,7 @@ const Graph = () => {
             tick={{ width: 100, wordWrap: 'break-word' }}
           />
           <Tooltip />
-          <Bar dataKey="uv" fill="#8884d8" barSize={20} />
+          <Bar dataKey="value" fill="#8884d8" barSize={20} />
         </BarChart>
       </ResponsiveContainer>
     </div>

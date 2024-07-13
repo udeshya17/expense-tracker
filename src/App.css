@@ -1,10 +1,11 @@
 .container {
     background-color: #3B3B3B;
-    width: 1256px;
-    height: 781px;
-    padding-left: 30px;
+    width: 100%; 
+    max-width: 1256px;
+    min-height: 781px;
+    height: 100%; 
+    padding: 20px; 
 }
-
 .heading {
     padding-top: 20px;
     color: white;
@@ -18,14 +19,17 @@
 }
 
 .content {
-    width: 1211px;
+    max-width: 1211px;
+    width: auto;
     height: 269px;
     border-radius: 10px;
     background-color: #626262;
     display: flex;
     gap: 50px;
     text-align: center;
+    flex-direction: row;
 }
+
 
 .cardOne,
 .cardTwo {
@@ -34,6 +38,8 @@
     height: 181px;
     border-radius: 15px;
     margin-top: 40px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
 }
 
 .cardOne {
@@ -120,7 +126,6 @@ hr{
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 30px;
 }
 
 .page {
@@ -145,5 +150,70 @@ top: 739px;
 left: 419px;
 border-radius: 15px;
 border: none;
+cursor: pointer;
 
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; 
+        width: auto;
+        height: auto;
+    }
+
+    .heading {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .content {
+        flex-direction: column; 
+        gap: 20px; 
+        width: auto;
+        height: auto;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .cardOne,
+    .cardTwo {
+        width: auto; 
+        padding: 10px;
+        margin: 0;
+        
+    }
+
+    .subContents {
+        padding: 15px; 
+        width: auto;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .subContainerOne,
+    .subContainerTwo {
+        flex-direction: column; 
+        gap: 20px; 
+        width: auto;
+        height: auto;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 24px; 
+    }
+
+    .subHead,
+    span {
+        font-size: 24px; 
+    }
+
+    .addButton {
+        width: 100%; 
+    }
 }

@@ -38,3 +38,11 @@
     line-height: 16.34px;
     text-align: left;
 }
+
+@media (max-width: 768px) {
+    .pieChart {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
+}
