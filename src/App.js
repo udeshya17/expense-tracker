@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Chart from './components/PieChart/PieChart';
 import Content from './components/SubContent/SubContent';
 import Graph from './components/BarGraph/BarGraph';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import AddBalanceModal from './components/Modal/AddBalance/AddBalance';
-import AddExpenseModal from './components/Modal/Expense/Expense';
+import ExpenseModal from './components/Modal/Expense/Expense';
 
 function App() {
   const [addBalanceModal, setAddBalanceModal] = useState(false);
@@ -63,8 +63,8 @@ function App() {
           </div>
         </div>
       </div>
-      {addBalanceModal && <AddBalanceModal closeModal={closeModal} />}
-      {addExpenseModal && <AddExpenseModal closeModal={closeModal} />}
+      {addBalanceModal && <AddBalanceModal isOpen={addBalanceModal} closeModal={closeModal} />}
+      {addExpenseModal && <ExpenseModal isOpen={addExpenseModal} closeModal={closeModal} />}
     </>
   );
 }
