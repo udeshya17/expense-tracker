@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Chart from './components/PieChart/PieChart';
 import Content from './components/SubContent/SubContent';
@@ -21,15 +21,24 @@ function App() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingTransaction, setEditingTransaction] = useState(null);
 
-  const handleAddBalance = () => {
-    setAddBalanceModal(true);
-    setIsDimmed(true);
-  };
+  // Load data from localStorage
+  useEffect(() => {
+    const storedBalance = localStorage.getItem('balance');
+    const storedExpense = localStorage.getItem('expense');
+    const storedTransactions = localStorage.getItem('transactions');
 
-  const handleAddExpense = () => {
-    setAddExpenseModal(true);
-    setIsDimmed(true);
-  };
+    if (storedBalance) {
+      setBalance(parseFloat(storedBalance));
+    }
+
+    if (storedExpense) {
+      setExpense(parseFloat(storedExpense));
+    }
+
+    if (storedTransactions) {
+      setTransactions(JSON.parse(storedTransactions));
+    }
+  }, []);
 
   const closeModal = () => {
     setAddBalanceModal(false);
@@ -40,7 +49,11 @@ function App() {
   };
 
   const addBalance = (newBalance) => {
-    setBalance((prevBalance) => prevBalance + newBalance);
+    setBalance((prevBalance) => {
+      const updatedBalance = prevBalance + newBalance;
+      localStorage.setItem('balance', updatedBalance);
+      return updatedBalance;
+    });
   };
 
   const addExpense = (newExpense, title, category, date) => {
@@ -48,8 +61,10 @@ function App() {
     if (!isNaN(expenseAmount) && expenseAmount > 0) {
       if (expenseAmount > balance) {
         enqueueSnackbar('Expense exceeds available balance!', { variant: 'error' });
-        return; // Prevent further processing
+        return;
       }
+      
+      const newTransaction = { title, amount: expenseAmount, category, date: new Date(date) };
       
       if (editingIndex !== null) {
         const previousAmount = transactions[editingIndex].amount;
@@ -61,15 +76,33 @@ function App() {
         });
 
         setTransactions(updatedTransactions);
-        setBalance((prevBalance) => prevBalance + previousAmount - expenseAmount);
-        setExpense((prevExpense) => prevExpense - previousAmount + expenseAmount);
+        setBalance((prevBalance) => {
+          const updatedBalance = prevBalance + previousAmount - expenseAmount;
+          localStorage.setItem('balance', updatedBalance);
+          localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
+          return updatedBalance;
+        });
+        setExpense((prevExpense) => {
+          const updatedExpense = prevExpense - previousAmount + expenseAmount;
+          localStorage.setItem('expense', updatedExpense);
+          return updatedExpense;
+        });
       } else {
-        setExpense((prevExpense) => prevExpense + expenseAmount);
-        setBalance((prevBalance) => prevBalance - expenseAmount);
-        setTransactions((prevTransactions) => [
-          ...prevTransactions,
-          { title, amount: expenseAmount, category, date: new Date(date) },
-        ]);
+        setTransactions((prevTransactions) => {
+          const updatedTransactions = [...prevTransactions, newTransaction];
+          localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
+          return updatedTransactions;
+        });
+        setExpense((prevExpense) => {
+          const updatedExpense = prevExpense + expenseAmount;
+          localStorage.setItem('expense', updatedExpense);
+          return updatedExpense;
+        });
+        setBalance((prevBalance) => {
+          const updatedBalance = prevBalance - expenseAmount;
+          localStorage.setItem('balance', updatedBalance);
+          return updatedBalance;
+        });
       }
     }
     closeModal();
@@ -77,9 +110,21 @@ function App() {
 
   const deleteExpense = (index) => {
     const expenseAmount = transactions[index].amount;
-    setTransactions((prevTransactions) => prevTransactions.filter((_, i) => i !== index));
-    setExpense((prevExpense) => prevExpense - expenseAmount);
-    setBalance((prevBalance) => prevBalance + expenseAmount);
+    setTransactions((prevTransactions) => {
+      const updatedTransactions = prevTransactions.filter((_, i) => i !== index);
+      localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
+      return updatedTransactions;
+    });
+    setExpense((prevExpense) => {
+      const updatedExpense = prevExpense - expenseAmount;
+      localStorage.setItem('expense', updatedExpense);
+      return updatedExpense;
+    });
+    setBalance((prevBalance) => {
+      const updatedBalance = prevBalance + expenseAmount;
+      localStorage.setItem('balance', updatedBalance);
+      return updatedBalance;
+    });
   };
 
   const editExpense = (index) => {
@@ -103,6 +148,16 @@ function App() {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  const handleAddBalance = () => {
+    setAddBalanceModal(true);
+    setIsDimmed(true);
+};
+
+const handleAddExpense = () => {
+    setAddExpenseModal(true);
+    setIsDimmed(true);
+};
 
   return (
     <>
